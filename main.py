@@ -3,16 +3,30 @@ import json
 import os
 import sys
 import uuid
+import time
 from datetime import datetime
 from mcp.server.fastmcp import FastMCP
+from contextlib import asynccontextmanager
 
-mcp = FastMCP("Memory Service")
+@asynccontextmanager
+async def app_lifespan(server: FastMCP):
+    # 初期化処理
+    print("サーバーを開始します...")
+    yield
+    # 終了処理
+    print("サーバーを正常終了します...")
+
+mcp = FastMCP("Memory Service", lifespan=app_lifespan)
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Get memory file path from command line argument or use default
 if len(sys.argv) > 1:
     MEMORY_FILE = sys.argv[1]
+elif len(sys.argv) > 2:
+    MEMORY_FILE = sys.argv[1]
+    PORT = int(sys.argv[2])
+    mcp.set_port(PORT)
 else:
     MEMORY_FILE = os.path.join(SCRIPT_DIR, "memory_data.json")
 
@@ -28,6 +42,8 @@ def load_memory_from_file():
             with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
                 memory_store = json.load(f)
             print(f"Loaded {len(memory_store)} memory entries.")
+            time.sleep(5)
+            os.exit()
         else:
             memory_store = {}
             print("Created new memory store.")
