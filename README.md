@@ -62,9 +62,9 @@ Memory is saved in the following format:
 ```
 memory_mcp/
 ├── .gitignore
+├── .dxtignore
 ├── icon.png         # Extension icon
-├── index.js         # Node.js entry point
-├── main.py          # Python MCP server
+├── main.py          # Entry point and MCP server
 ├── manifest.json    # Extension manifest
 ├── package.json     # Project configuration
 ├── requirements.txt # Python dependencies

@@ -62,9 +62,9 @@ Memory MCP サーバーは、デスクトップ拡張機能向けのローカル
 ```
 memory_mcp/
 ├── .gitignore
+├── .dxtignore
 ├── icon.png         # 拡張機能アイコン
-├── index.js         # Node.js エントリーポイント
-├── main.py          # Python MCP サーバー
+├── main.py          # エントリーポイント兼MCPサーバー
 ├── manifest.json    # 拡張機能マニフェスト
 ├── package.json     # プロジェクト設定
 ├── requirements.txt # Python依存関係
