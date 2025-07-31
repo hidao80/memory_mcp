@@ -1,0 +1,37 @@
+{
+    "dxt_version": "0.1",
+    "name": "memory-mcp-server",
+    "display_name": "Memory MCP Server",
+    "version": "1.0.0",
+    "icon": "icon.png",
+    "description": "This is a memory MCP server for the desktop extension, designed to run locally on your machine.",
+    "author": {
+        "name": "hidao80"
+    },
+    "license": "MIT",
+    "keywords": [
+        "memory",
+        "mcp",
+        "desktop-extension"
+    ],
+    "server": {
+        "type": "node",
+        "entry_point": "index.js",
+        "mcp_config": {
+            "command": "python",
+            "args": [
+                "${__dirname}/main.py",
+                "${user_config.memory_file}"
+            ]
+        }
+    },
+    "user_config": {
+        "memory_file": {
+            "type": "file",
+            "title": "Memory file",
+            "description": "Select your memory file (.json)",
+            "default": "{home}/memory_data.json",
+            "required": true
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "memory-mcp",
+    "version": "1.0.0",
+    "description": "This is a memory MCP server for the desktop extension, designed to run locally on your machine.",
+    "main": "index.js",
+    "scripts": {
+        "package": "npx @anthropic-ai/dxt pack && (mkdir -p ../dist 2>/dev/null || mkdir ..\\dist 2>nul || echo) && (mv *.dxt ../dist/memory-mcp-server.dxt 2>/dev/null || move *.dxt ..\\dist\\memory-mcp-server.dxt 2>nul || echo 'Please manually move the .dxt file')",
+        "package-ps": "npx @anthropic-ai/dxt pack && powershell -Command \"if (!(Test-Path '../dist')) { New-Item -ItemType Directory -Path '../dist' -Force }; Get-ChildItem -Name '*.dxt' | ForEach-Object { Move-Item $_ '../dist/memory-mcp-server.dxt' }\""
+    },
+    "devDependencies": {
+        "@anthropic-ai/dxt": "^0.1.0"
+    },
+    "keywords": [
+        "mcp",
+        "memory",
+        "claude-desktop",
+        "dxt",
+        "node"
+    ],
+    "author": "hidao80",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
