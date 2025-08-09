@@ -1,9 +1,7 @@
-import asyncio
 import json
 import os
 import sys
 import uuid
-import time
 from datetime import datetime
 from mcp.server.fastmcp import FastMCP
 from contextlib import asynccontextmanager
@@ -53,6 +51,7 @@ def load_memory_from_file():
 
 def save_memory_to_file():
     """Save memory data to JSON file"""
+    global memory_store
     try:
         with open(MEMORY_FILE, 'w', encoding='utf-8') as f:
             json.dump(memory_store, f, ensure_ascii=False, indent=2)

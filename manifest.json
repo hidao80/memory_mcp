@@ -2,7 +2,7 @@
     "dxt_version": "0.1",
     "name": "memory",
     "display_name": "Memory MCP Server",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "icon": "icon.png",
     "description": "This is a memory MCP server for the desktop extension, designed to run locally on your machine.",
     "author": {
