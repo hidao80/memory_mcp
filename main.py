@@ -33,48 +33,6 @@ LOG_FILE = os.path.join(SCRIPT_DIR, "memory_operations.log")
 
 memory_store = {}
 
-def load_memory_from_file():
-    """Load memory data from JSON file"""
-    global memory_store
-    try:
-        if os.path.exists(MEMORY_FILE):
-            with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
-                memory_store = json.load(f)
-            print(f"Loaded {len(memory_store)} memory entries.")
-            time.sleep(5)
-            os.exit()
-        else:
-            memory_store = {}
-            print("Created new memory store.")
-    except Exception as e:
-        print("Failed to load memory file.")
-        memory_store = {}
-
-def save_memory_to_file():
-    """Save memory data to JSON file"""
-    global memory_store
-    try:
-        with open(MEMORY_FILE, 'w', encoding='utf-8') as f:
-            json.dump(memory_store, f, ensure_ascii=False, indent=2)
-        return True
-    except Exception:
-        print("Failed to save memory file.")
-        return False
-
-def generate_auto_key():
-    """Generate auto key from current time"""
-    now = datetime.now()
-    return f"memory_{now.strftime('%Y%m%d%H%M%S')}"
-
-def create_memory_entry(content: str):
-    """Create memory entry with metadata"""
-    now = datetime.now().isoformat()
-    return {
-        "content": content,
-        "created_at": now,
-        "updated_at": now
-    }
-
 def log_operation(operation: str, key: str = None, before: dict = None, after: dict = None, 
                  success: bool = True, error: str = None, metadata: dict = None):
     """Log memory operations to jsonl file"""
@@ -96,6 +54,44 @@ def log_operation(operation: str, key: str = None, before: dict = None, after: d
     except Exception as e:
         print(f"Failed to write log: {str(e)}")
 
+def load_memory_from_file():
+    """Load memory data from JSON file"""
+    global memory_store
+    try:
+        if os.path.exists(MEMORY_FILE):
+            with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
+                memory_store = json.load(f)
+            log_operation("load", metadata={"message": f"Loaded {len(memory_store)} memory entries."})
+        else:
+            memory_store = {}
+    except Exception as e:
+        log_operation("load", metadata={"message": f"Unexpected error: {type(e).__name__}: {e}"})
+        memory_store = {}
+
+def save_memory_to_file():
+    """Save memory data to JSON file"""
+    try:
+        with open(MEMORY_FILE, 'w', encoding='utf-8') as f:
+            json.dump(memory_store, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception:
+        log_operation("save", success=False, error="Failed to save memory file.")
+        return False
+
+def generate_auto_key():
+    """Generate auto key from current time"""
+    now = datetime.now()
+    return f"memory_{now.strftime('%Y%m%d%H%M%S')}"
+
+def create_memory_entry(content: str):
+    """Create memory entry with metadata"""
+    now = datetime.now().isoformat()
+    return {
+        "content": content,
+        "created_at": now,
+        "updated_at": now
+    }
+
 @mcp.tool()
 async def list_memory() -> str:
     """
@@ -103,8 +99,6 @@ async def list_memory() -> str:
     List all user info. 
     """
     try:
-        log_operation("list", metadata={"entry_count": len(memory_store)})
-        
         if memory_store:
             keys = list(memory_store.keys())
             sorted_keys = sorted(keys, key=lambda k: memory_store[k]['created_at'], reverse=True)
