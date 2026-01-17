@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      target: runner
+    ports:
+      - "58902:58902"
+    volumes:
+      - ./main.py:/app/main.py:ro
+      - ./memory_data.json:/app/memory_data.json
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python main.py /app/memory_data.json
