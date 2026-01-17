@@ -1,6 +1,8 @@
 # Memory MCP Server
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Lint](https://github.com/hidao80/memory_mcp/actions/workflows/lint.yml/badge.svg)
+![Audit](https://github.com/hidao80/memory_mcp/actions/workflows/audit.yml/badge.svg)
 
 Memory MCP Server is a locally running memory management server for desktop extensions. This is a memory MCP server for the desktop extension that provides a simple interface for remembering and managing user preferences, interests, personal information, current status, and more in a local environment.
 
@@ -22,6 +24,26 @@ Memory MCP Server is a locally running memory management server for desktop exte
 ## Usage
 
 1. Execute prompts from Claude Desktop. Memory will be automatically updated as needed.
+
+## Quick Start
+
+### Run with Docker
+
+```bash
+# Development
+docker compose up
+
+# Production build
+docker build -t memory-mcp .
+docker run -p 58902:58902 -v ./memory_data.json:/app/memory_data.json memory-mcp
+```
+
+### Run locally
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
 
 ## Developer Information
 
