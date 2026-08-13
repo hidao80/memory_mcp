@@ -51,6 +51,7 @@ htmlcov/
 # Documentation
 *.md
 docs/
+graphify-out/
 
 # CI/CD
 .github/
