@@ -2,9 +2,11 @@ import json
 import os
 import sys
 import uuid
-from datetime import datetime
-from mcp.server.fastmcp import FastMCP
 from contextlib import asynccontextmanager
+from datetime import datetime
+
+from mcp.server.fastmcp import FastMCP
+
 
 @asynccontextmanager
 async def app_lifespan(server: FastMCP):
@@ -32,8 +34,8 @@ LOG_FILE = os.path.join(SCRIPT_DIR, "memory_operations.log")
 
 memory_store = {}
 
-def log_operation(operation: str, key: str = None, before: dict = None, after: dict = None, 
-                 success: bool = True, error: str = None, metadata: dict = None):
+def log_operation(operation: str, key: str | None = None, before: dict | None = None, after: dict | None = None,
+                 success: bool = True, error: str | None = None, metadata: dict | None = None):
     """Log memory operations to jsonl file"""
     try:
         log_entry = {
@@ -51,7 +53,7 @@ def log_operation(operation: str, key: str = None, before: dict = None, after: d
         with open(LOG_FILE, 'a', encoding='utf-8') as f:
             f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
     except Exception as e:
-        print(f"Failed to write log: {str(e)}")
+        print(f"Failed to write log: {e!s}")
 
 def load_memory_from_file():
     """Load memory data from JSON file"""
@@ -114,7 +116,7 @@ async def list_memory() -> str:
             return "No user info saved yet."
     except Exception as e:
         log_operation("list", success=False, error=str(e))
-        return f"Failed to list memory: {str(e)}"
+        return f"Failed to list memory: {e!s}"
 
 @mcp.tool()
 async def create_memory(content: str) -> str:
@@ -164,7 +166,7 @@ async def create_memory(content: str) -> str:
     except Exception as e:
         log_operation("create", success=False, error=str(e), 
                      metadata={"attempted_content_length": len(content) if content else 0})
-        return f"Failed to save: {str(e)}"
+        return f"Failed to save: {e!s}"
 
 @mcp.tool()
 async def update_memory(key: str, content: str) -> str:
@@ -210,7 +212,7 @@ async def update_memory(key: str, content: str) -> str:
     except Exception as e:
         log_operation("update", key=key, success=False, error=str(e),
                      metadata={"attempted_content_length": len(content) if content else 0})
-        return f"Failed to update memory: {str(e)}"
+        return f"Failed to update memory: {e!s}"
 
 @mcp.tool()
 async def read_memory(key: str) -> str:
@@ -238,7 +240,7 @@ Chars: {len(entry['content'])}"""
                 return f"Key '{key}' not found. No memory data."
     except Exception as e:
         log_operation("read", key=key, success=False, error=str(e))
-        return f"Failed to read memory: {str(e)}"
+        return f"Failed to read memory: {e!s}"
 
 @mcp.tool()
 async def delete_memory(key: str) -> str:
@@ -268,7 +270,7 @@ async def delete_memory(key: str) -> str:
                 return f"Key '{key}' not found. No memory data."
     except Exception as e:
         log_operation("delete", key=key, success=False, error=str(e))
-        return f"Failed to delete memory: {str(e)}"
+        return f"Failed to delete memory: {e!s}"
 
 @mcp.resource("memory://info")
 def get_memory_info() -> str:

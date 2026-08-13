@@ -1,0 +1,5 @@
+[tool.ruff.lint]
+# BLE001: every tool wraps its logic in a broad try/except by design (see AGENTS.md)
+#         so it can log the failure and return a human-readable error string.
+# DTZ005: memory keys/timestamps intentionally use naive local time, not UTC.
+ignore = ["BLE001", "DTZ005"]
