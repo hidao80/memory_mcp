@@ -1,0 +1,27 @@
+# Memory MCP Server
+
+> A single-file Python MCP (Model Context Protocol) server that gives Claude Desktop (and other MCP clients) a local, file-backed memory store for user preferences, interests, personal details, and current status. It runs locally over stdio and is packaged as a Claude Desktop extension (`.dxt`).
+
+Memory MCP Server exposes five MCP tools (`list_memory`, `create_memory`, `update_memory`, `read_memory`, `delete_memory`) and one MCP resource (`memory://info`) backed by a plain JSON file — there is no database. State lives in a module-level `memory_store` dict, loaded on startup and written back to disk on every mutation. Every operation is also logged as a JSON line to `memory_operations.log` as an audit trail (not application state).
+
+Entry point: `python main.py [memory_file] [port]`. With no arguments the memory file defaults to `<script_dir>/memory_data.json` and transport is stdio.
+
+## Docs
+
+- [README](../README.md): English usage guide — features, installation, quick start (Docker and local), memory JSON format, directory structure.
+- [README (Japanese)](../README_ja.md): Japanese translation of the above.
+- [AGENTS.md](../AGENTS.md): Guidance for AI coding agents working in this repository — key files, runtime model, conventions, and rules for changing behavior.
+- [Architecture Decision Records](ADR.md): ADRs generated/updated from git history documenting past design decisions.
+
+## Source
+
+- [main.py](../main.py): the entire server implementation, built with `mcp.server.fastmcp.FastMCP`.
+- [manifest.json](../manifest.json): Claude Desktop extension manifest (`dxt_version`, entry point, `user_config` for `memory_file` path and `port`).
+- [requirements.txt](../requirements.txt): Python dependencies (MCP SDK).
+- [package.json](../package.json): npm metadata used only to pack the `.dxt` extension via `npx @anthropic-ai/dxt pack`.
+
+## Optional
+
+- [Dockerfile](../Dockerfile) and [docker-compose.yml](../docker-compose.yml): container packaging for running the server outside Claude Desktop.
+- [.github/workflows/lint.yml](../.github/workflows/lint.yml) and [.github/workflows/audit.yml](../.github/workflows/audit.yml): CI for linting and security auditing.
+- [LICENSE](../LICENSE): MIT License.

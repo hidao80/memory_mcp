@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory MCP Server — Local Memory for Claude Desktop</title>
+  <meta name="description" content="A locally running memory management MCP server for Claude Desktop. Remember user preferences, interests, and personal context across conversations — all stored on your machine.">
+  <link rel="canonical" href="https://github.com/hidao80/memory_mcp">
+
+  <link rel="icon" type="image/svg+xml" href="./icon.png">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Memory MCP Server — Local Memory for Claude Desktop">
+  <meta property="og:description" content="A locally running memory management MCP server for Claude Desktop. Remember user preferences, interests, and personal context across conversations — all stored on your machine.">
+  <meta property="og:url" content="https://github.com/hidao80/memory_mcp">
+  <meta property="og:image" content="./social-preview.png">
+  <meta property="og:site_name" content="Memory MCP Server">
+  <meta property="og:locale" content="en_US">
+
+  <!-- X.com / Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memory MCP Server — Local Memory for Claude Desktop">
+  <meta name="twitter:description" content="A locally running memory management MCP server for Claude Desktop. Remember user preferences, interests, and personal context across conversations.">
+  <meta name="twitter:image" content="./social-preview.png">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Memory MCP Server",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "description": "A locally running memory management MCP server for Claude Desktop that provides CRUD operations for storing user preferences, interests, personal info, and current status locally as JSON.",
+    "url": "https://github.com/hidao80/memory_mcp",
+    "downloadUrl": "https://github.com/hidao80/memory_mcp/releases",
+    "softwareVersion": "1.0.4",
+    "license": "https://opensource.org/licenses/MIT",
+    "image": "./social-preview.png",
+    "author": {
+      "@type": "Person",
+      "name": "hidao80"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    :root {
+      --brand: #f97316;
+    }
+    header.hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+    header.hero .emoji {
+      font-size: 4rem;
+      line-height: 1;
+    }
+    header.hero p.tagline {
+      color: var(--pico-muted-color);
+      font-size: 1.15rem;
+      max-width: 40rem;
+      margin: 1rem auto 2rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .badges img {
+      margin: 0.15rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-grid article {
+      margin: 0;
+    }
+    .feature-grid article h3 {
+      margin-bottom: 0.35rem;
+    }
+    pre {
+      overflow-x: auto;
+    }
+    footer {
+      text-align: center;
+      color: var(--pico-muted-color);
+      padding: 2rem 1rem;
+    }
+    .steps li {
+      margin-bottom: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <header class="hero">
+      <div class="emoji" aria-hidden="true">📜</div>
+      <h1>Memory MCP Server</h1>
+      <p class="tagline">
+        A locally running memory management server for Claude Desktop.
+        Remember preferences, interests, and personal context — entirely on your own machine.
+      </p>
+      <div class="badges">
+        <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+        <img src="https://github.com/hidao80/memory_mcp/actions/workflows/lint.yml/badge.svg" alt="Lint status">
+        <img src="https://github.com/hidao80/memory_mcp/actions/workflows/audit.yml/badge.svg" alt="Audit status">
+      </div>
+      <div class="hero-actions">
+        <a href="https://github.com/hidao80/memory_mcp/releases" role="button">Download latest release</a>
+        <a href="https://github.com/hidao80/memory_mcp" role="button" class="secondary">View on GitHub</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <article>
+          <h3>🗂️ Full CRUD</h3>
+          <p>Create, read, update, and delete user memory entries through simple MCP tools.</p>
+        </article>
+        <article>
+          <h3>💾 Local JSON storage</h3>
+          <p>Memory is saved automatically to a JSON file you control — no cloud, no external database.</p>
+        </article>
+        <article>
+          <h3>📜 Operation logging</h3>
+          <p>Every memory operation is logged to a JSONL audit trail for transparency.</p>
+        </article>
+        <article>
+          <h3>🖥️ Desktop extension</h3>
+          <p>Packaged as a <code>.dxt</code> file — drag, drop, and enable inside Claude Desktop.</p>
+        </article>
+        <article>
+          <h3>🌐 Multi-platform</h3>
+          <p>Runs on Windows, macOS, and Linux, locally or via Docker.</p>
+        </article>
+        <article>
+          <h3>🔗 Knowledge-graph ready</h3>
+          <p>Entities saved with <code>[[wiki-links]]</code> for Obsidian-style graph visualization.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Quick start</h2>
+
+      <h3>Install as a Claude Desktop extension</h3>
+      <ol class="steps">
+        <li>Download the latest <code>.dxt</code> from the <a href="https://github.com/hidao80/memory_mcp/releases">GitHub releases page</a>.</li>
+        <li>Extract the downloaded file.</li>
+        <li>In Claude Desktop's settings, open the Extensions page and drag and drop the extracted <code>.dxt</code> file.</li>
+        <li>When enabling it, set the location for your save file (required).</li>
+      </ol>
+
+      <h3>Run with Docker</h3>
+      <pre><code># Development
+docker compose up
+
+# Production build
+docker build -t memory-mcp .
+docker run -p 58902:58902 -v ./memory_data.json:/app/memory_data.json memory-mcp</code></pre>
+
+      <h3>Run locally</h3>
+      <pre><code>pip install -r requirements.txt
+python main.py</code></pre>
+    </section>
+
+    <section>
+      <h2>Memory format</h2>
+      <p>Every memory entry is stored as a simple, portable JSON object:</p>
+      <pre><code>{
+  "key": "memory_YYYYMMDDHHMMSS",
+  "content": "User is [specific info]",
+  "timestamp": "YYYY-MM-DDTHH:MM:SS.ssssss"
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Contributing</h2>
+      <p>Bug reports and pull requests are welcome on <a href="https://github.com/hidao80/memory_mcp">GitHub</a>.</p>
+    </section>
+
+    <footer>
+      <p>
+        Released under the <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MIT License</a>.
+        Created by <a href="https://github.com/hidao80">hidao80</a>.
+      </p>
+    </footer>
+
+  </main>
+</body>
+</html>
