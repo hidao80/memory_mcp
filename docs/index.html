@@ -7,7 +7,7 @@
   <meta name="description" content="A locally running memory management MCP server for Claude Desktop. Remember user preferences, interests, and personal context across conversations — all stored on your machine.">
   <link rel="canonical" href="https://github.com/hidao80/memory_mcp">
 
-  <link rel="icon" type="image/svg+xml" href="./icon.png">
+  <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4dc.svg">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
@@ -51,66 +51,39 @@
   </script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <style>
-    :root {
-      --brand: #f97316;
-    }
-    header.hero {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-    }
-    header.hero .emoji {
-      font-size: 4rem;
-      line-height: 1;
-    }
-    header.hero p.tagline {
-      color: var(--pico-muted-color);
-      font-size: 1.15rem;
-      max-width: 40rem;
-      margin: 1rem auto 2rem;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .badges img {
-      margin: 0.15rem;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-    .feature-grid article {
-      margin: 0;
-    }
-    .feature-grid article h3 {
-      margin-bottom: 0.35rem;
-    }
-    pre {
-      overflow-x: auto;
-    }
-    footer {
-      text-align: center;
-      color: var(--pico-muted-color);
-      padding: 2rem 1rem;
-    }
-    .steps li {
-      margin-bottom: 0.6rem;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <nav class="topnav container-fluid">
+    <ul>
+      <li><strong>Memory MCP Server</strong></li>
+    </ul>
+    <ul>
+      <li class="lang-switcher">
+        <select id="lang-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="ru">Русский</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+
   <main class="container">
 
     <header class="hero">
       <div class="emoji" aria-hidden="true">📜</div>
       <h1>Memory MCP Server</h1>
       <p class="tagline">
-        A locally running memory management server for Claude Desktop.
-        Remember preferences, interests, and personal context — entirely on your own machine.
+        <template type="language-group">
+          <span language="en">A locally running memory management server for Claude Desktop. Remember preferences, interests, and personal context — entirely on your own machine.</span>
+          <span language="ja">Claude Desktop向けにローカルで動作するメモリ管理サーバー。好み・興味・個人的な文脈を、自分のマシン上だけで記憶します。</span>
+          <span language="zh">一款在本地运行的 Claude Desktop 记忆管理服务器。偏好、兴趣和个人上下文，全部保存在你自己的电脑上。</span>
+          <span language="es">Un servidor de gestión de memoria que se ejecuta localmente para Claude Desktop. Recuerda preferencias, intereses y contexto personal, todo en tu propia máquina.</span>
+          <span language="ru">Локально работающий сервер управления памятью для Claude Desktop. Запоминает предпочтения, интересы и личный контекст — полностью на вашем компьютере.</span>
+        </template>
       </p>
       <div class="badges">
         <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
@@ -118,68 +91,278 @@
         <img src="https://github.com/hidao80/memory_mcp/actions/workflows/audit.yml/badge.svg" alt="Audit status">
       </div>
       <div class="hero-actions">
-        <a href="https://github.com/hidao80/memory_mcp/releases" role="button">Download latest release</a>
-        <a href="https://github.com/hidao80/memory_mcp" role="button" class="secondary">View on GitHub</a>
+        <a href="https://github.com/hidao80/memory_mcp/releases" role="button">
+          <template type="language-group">
+            <span language="en">Download latest release</span>
+            <span language="ja">最新リリースをダウンロード</span>
+            <span language="zh">下载最新版本</span>
+            <span language="es">Descargar última versión</span>
+            <span language="ru">Скачать последний релиз</span>
+          </template>
+        </a>
+        <a href="https://github.com/hidao80/memory_mcp" role="button" class="secondary">
+          <template type="language-group">
+            <span language="en">View on GitHub</span>
+            <span language="ja">GitHubで見る</span>
+            <span language="zh">在 GitHub 上查看</span>
+            <span language="es">Ver en GitHub</span>
+            <span language="ru">Смотреть на GitHub</span>
+          </template>
+        </a>
       </div>
     </header>
 
     <section>
-      <h2>Features</h2>
+      <h2>
+        <template type="language-group">
+          <span language="en">Features</span>
+          <span language="ja">機能</span>
+          <span language="zh">功能</span>
+          <span language="es">Características</span>
+          <span language="ru">Возможности</span>
+        </template>
+      </h2>
       <div class="feature-grid">
         <article>
-          <h3>🗂️ Full CRUD</h3>
-          <p>Create, read, update, and delete user memory entries through simple MCP tools.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">🗂️ Full CRUD</span>
+              <span language="ja">🗂️ フルCRUD</span>
+              <span language="zh">🗂️ 完整 CRUD</span>
+              <span language="es">🗂️ CRUD completo</span>
+              <span language="ru">🗂️ Полный CRUD</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Create, read, update, and delete user memory entries through simple MCP tools.</span>
+              <span language="ja">シンプルなMCPツールで、ユーザーメモリの作成・読み取り・更新・削除ができます。</span>
+              <span language="zh">通过简单的 MCP 工具创建、读取、更新和删除用户记忆条目。</span>
+              <span language="es">Crea, lee, actualiza y elimina entradas de memoria del usuario mediante herramientas MCP simples.</span>
+              <span language="ru">Создавайте, читайте, обновляйте и удаляйте записи памяти пользователя с помощью простых инструментов MCP.</span>
+            </template>
+          </p>
         </article>
         <article>
-          <h3>💾 Local JSON storage</h3>
-          <p>Memory is saved automatically to a JSON file you control — no cloud, no external database.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">💾 Local JSON storage</span>
+              <span language="ja">💾 ローカルJSON保存</span>
+              <span language="zh">💾 本地 JSON 存储</span>
+              <span language="es">💾 Almacenamiento JSON local</span>
+              <span language="ru">💾 Локальное хранилище JSON</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Memory is saved automatically to a JSON file you control — no cloud, no external database.</span>
+              <span language="ja">メモリは自分が管理するJSONファイルへ自動保存されます — クラウドも外部データベースも不要。</span>
+              <span language="zh">记忆会自动保存到你自己控制的 JSON 文件中 — 无需云端，无需外部数据库。</span>
+              <span language="es">La memoria se guarda automáticamente en un archivo JSON que tú controlas — sin nube, sin base de datos externa.</span>
+              <span language="ru">Память автоматически сохраняется в JSON-файл, которым управляете вы — без облака и внешних баз данных.</span>
+            </template>
+          </p>
         </article>
         <article>
-          <h3>📜 Operation logging</h3>
-          <p>Every memory operation is logged to a JSONL audit trail for transparency.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">📜 Operation logging</span>
+              <span language="ja">📜 操作ログ記録</span>
+              <span language="zh">📜 操作日志</span>
+              <span language="es">📜 Registro de operaciones</span>
+              <span language="ru">📜 Журнал операций</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Every memory operation is logged to a JSONL audit trail for transparency.</span>
+              <span language="ja">全メモリ操作はJSONL形式の監査ログへ記録され、透明性を確保します。</span>
+              <span language="zh">每次记忆操作都会记录到 JSONL 审计日志中，保证透明可追溯。</span>
+              <span language="es">Cada operación de memoria se registra en un rastro de auditoría JSONL para mayor transparencia.</span>
+              <span language="ru">Каждая операция с памятью записывается в журнал аудита JSONL для прозрачности.</span>
+            </template>
+          </p>
         </article>
         <article>
-          <h3>🖥️ Desktop extension</h3>
-          <p>Packaged as a <code>.dxt</code> file — drag, drop, and enable inside Claude Desktop.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">🖥️ Desktop extension</span>
+              <span language="ja">🖥️ デスクトップ拡張機能</span>
+              <span language="zh">🖥️ 桌面扩展</span>
+              <span language="es">🖥️ Extensión de escritorio</span>
+              <span language="ru">🖥️ Расширение для десктопа</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Packaged as a <code>.dxt</code> file — drag, drop, and enable inside Claude Desktop.</span>
+              <span language="ja"><code>.dxt</code>ファイルとして配布 — Claude Desktopへドラッグ&ドロップして有効化するだけ。</span>
+              <span language="zh">打包为 <code>.dxt</code> 文件 — 在 Claude Desktop 中拖放启用即可。</span>
+              <span language="es">Empaquetado como archivo <code>.dxt</code> — arrastra, suelta y habilita dentro de Claude Desktop.</span>
+              <span language="ru">Упаковано в файл <code>.dxt</code> — перетащите и включите прямо в Claude Desktop.</span>
+            </template>
+          </p>
         </article>
         <article>
-          <h3>🌐 Multi-platform</h3>
-          <p>Runs on Windows, macOS, and Linux, locally or via Docker.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">🌐 Multi-platform</span>
+              <span language="ja">🌐 マルチプラットフォーム</span>
+              <span language="zh">🌐 多平台支持</span>
+              <span language="es">🌐 Multiplataforma</span>
+              <span language="ru">🌐 Кроссплатформенность</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Runs on Windows, macOS, and Linux, locally or via Docker.</span>
+              <span language="ja">Windows・macOS・Linuxで動作。ローカル実行もDocker実行も可能。</span>
+              <span language="zh">可在 Windows、macOS 和 Linux 上运行，支持本地或 Docker 方式。</span>
+              <span language="es">Funciona en Windows, macOS y Linux, localmente o mediante Docker.</span>
+              <span language="ru">Работает на Windows, macOS и Linux — локально или через Docker.</span>
+            </template>
+          </p>
         </article>
         <article>
-          <h3>🔗 Knowledge-graph ready</h3>
-          <p>Entities saved with <code>[[wiki-links]]</code> for Obsidian-style graph visualization.</p>
+          <h3>
+            <template type="language-group">
+              <span language="en">🔗 Knowledge-graph ready</span>
+              <span language="ja">🔗 ナレッジグラフ対応</span>
+              <span language="zh">🔗 支持知识图谱</span>
+              <span language="es">🔗 Listo para grafos de conocimiento</span>
+              <span language="ru">🔗 Готово для графа знаний</span>
+            </template>
+          </h3>
+          <p>
+            <template type="language-group">
+              <span language="en">Entities saved with <code>[[wiki-links]]</code> for Obsidian-style graph visualization.</span>
+              <span language="ja">エンティティは<code>[[wiki-links]]</code>形式で保存し、Obsidian風のグラフ表示に対応します。</span>
+              <span language="zh">实体以 <code>[[wiki-links]]</code> 形式保存，支持 Obsidian 风格的图谱可视化。</span>
+              <span language="es">Las entidades se guardan con <code>[[wiki-links]]</code> para visualización de grafos al estilo Obsidian.</span>
+              <span language="ru">Сущности сохраняются с <code>[[wiki-links]]</code> для визуализации графа в стиле Obsidian.</span>
+            </template>
+          </p>
         </article>
       </div>
     </section>
 
     <section>
-      <h2>Quick start</h2>
+      <h2>
+        <template type="language-group">
+          <span language="en">Quick start</span>
+          <span language="ja">クイックスタート</span>
+          <span language="zh">快速开始</span>
+          <span language="es">Inicio rápido</span>
+          <span language="ru">Быстрый старт</span>
+        </template>
+      </h2>
 
-      <h3>Install as a Claude Desktop extension</h3>
+      <h3>
+        <template type="language-group">
+          <span language="en">Install as a Claude Desktop extension</span>
+          <span language="ja">Claude Desktop拡張機能としてインストール</span>
+          <span language="zh">作为 Claude Desktop 扩展安装</span>
+          <span language="es">Instalar como extensión de Claude Desktop</span>
+          <span language="ru">Установка как расширение Claude Desktop</span>
+        </template>
+      </h3>
       <ol class="steps">
-        <li>Download the latest <code>.dxt</code> from the <a href="https://github.com/hidao80/memory_mcp/releases">GitHub releases page</a>.</li>
-        <li>Extract the downloaded file.</li>
-        <li>In Claude Desktop's settings, open the Extensions page and drag and drop the extracted <code>.dxt</code> file.</li>
-        <li>When enabling it, set the location for your save file (required).</li>
+        <li>
+          <template type="language-group">
+            <span language="en">Download the latest <code>.dxt</code> from the <a href="https://github.com/hidao80/memory_mcp/releases">GitHub releases page</a>.</span>
+            <span language="ja">GitHubの<a href="https://github.com/hidao80/memory_mcp/releases">リリースページ</a>から最新の<code>.dxt</code>ファイルをダウンロードします。</span>
+            <span language="zh">从 <a href="https://github.com/hidao80/memory_mcp/releases">GitHub 发布页面</a>下载最新的 <code>.dxt</code> 文件。</span>
+            <span language="es">Descarga el último <code>.dxt</code> desde la <a href="https://github.com/hidao80/memory_mcp/releases">página de versiones de GitHub</a>.</span>
+            <span language="ru">Скачайте последний файл <code>.dxt</code> со <a href="https://github.com/hidao80/memory_mcp/releases">страницы релизов GitHub</a>.</span>
+          </template>
+        </li>
+        <li>
+          <template type="language-group">
+            <span language="en">Extract the downloaded file.</span>
+            <span language="ja">ダウンロードしたファイルを解凍します。</span>
+            <span language="zh">解压下载的文件。</span>
+            <span language="es">Extrae el archivo descargado.</span>
+            <span language="ru">Распакуйте скачанный файл.</span>
+          </template>
+        </li>
+        <li>
+          <template type="language-group">
+            <span language="en">In Claude Desktop's settings, open the Extensions page and drag and drop the extracted <code>.dxt</code> file.</span>
+            <span language="ja">Claude Desktopの設定で拡張機能ページを開き、解凍した<code>.dxt</code>ファイルをドラッグ&ドロップします。</span>
+            <span language="zh">在 Claude Desktop 的设置中打开扩展页面，将解压后的 <code>.dxt</code> 文件拖放进去。</span>
+            <span language="es">En la configuración de Claude Desktop, abre la página de Extensiones y arrastra y suelta el archivo <code>.dxt</code> extraído.</span>
+            <span language="ru">В настройках Claude Desktop откройте страницу расширений и перетащите туда распакованный файл <code>.dxt</code>.</span>
+          </template>
+        </li>
+        <li>
+          <template type="language-group">
+            <span language="en">When enabling it, set the location for your save file (required).</span>
+            <span language="ja">有効化する際に、保存ファイルの場所を設定します（必須）。</span>
+            <span language="zh">启用时，设置保存文件的位置（必需）。</span>
+            <span language="es">Al habilitarlo, configura la ubicación de tu archivo de guardado (obligatorio).</span>
+            <span language="ru">При включении укажите расположение файла сохранения (обязательно).</span>
+          </template>
+        </li>
       </ol>
 
-      <h3>Run with Docker</h3>
-      <pre><code># Development
+      <h3>
+        <template type="language-group">
+          <span language="en">Run with Docker</span>
+          <span language="ja">Dockerで実行</span>
+          <span language="zh">使用 Docker 运行</span>
+          <span language="es">Ejecutar con Docker</span>
+          <span language="ru">Запуск через Docker</span>
+        </template>
+      </h3>
+      <div class="code-row">
+        <pre><code id="code-docker"># Development
 docker compose up
 
 # Production build
 docker build -t memory-mcp .
 docker run -p 58902:58902 -v ./memory_data.json:/app/memory_data.json memory-mcp</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="code-docker" aria-label="Copy Docker command">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        </button>
+      </div>
 
-      <h3>Run locally</h3>
-      <pre><code>pip install -r requirements.txt
+      <h3>
+        <template type="language-group">
+          <span language="en">Run locally</span>
+          <span language="ja">ローカルで実行</span>
+          <span language="zh">本地运行</span>
+          <span language="es">Ejecutar localmente</span>
+          <span language="ru">Локальный запуск</span>
+        </template>
+      </h3>
+      <div class="code-row">
+        <pre><code id="code-local">pip install -r requirements.txt
 python main.py</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="code-local" aria-label="Copy local run command">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        </button>
+      </div>
     </section>
 
     <section>
-      <h2>Memory format</h2>
-      <p>Every memory entry is stored as a simple, portable JSON object:</p>
+      <h2>
+        <template type="language-group">
+          <span language="en">Memory format</span>
+          <span language="ja">メモリの形式</span>
+          <span language="zh">记忆格式</span>
+          <span language="es">Formato de memoria</span>
+          <span language="ru">Формат памяти</span>
+        </template>
+      </h2>
+      <p>
+        <template type="language-group">
+          <span language="en">Every memory entry is stored as a simple, portable JSON object:</span>
+          <span language="ja">各メモリは、シンプルで可搬性のあるJSONオブジェクトとして保存されます:</span>
+          <span language="zh">每条记忆都以简单、可移植的 JSON 对象形式存储：</span>
+          <span language="es">Cada entrada de memoria se guarda como un objeto JSON simple y portable:</span>
+          <span language="ru">Каждая запись памяти хранится в виде простого переносимого JSON-объекта:</span>
+        </template>
+      </p>
       <pre><code>{
   "key": "memory_YYYYMMDDHHMMSS",
   "content": "User is [specific info]",
@@ -188,17 +371,41 @@ python main.py</code></pre>
     </section>
 
     <section>
-      <h2>Contributing</h2>
-      <p>Bug reports and pull requests are welcome on <a href="https://github.com/hidao80/memory_mcp">GitHub</a>.</p>
+      <h2>
+        <template type="language-group">
+          <span language="en">Contributing</span>
+          <span language="ja">貢献について</span>
+          <span language="zh">贡献</span>
+          <span language="es">Contribuir</span>
+          <span language="ru">Участие</span>
+        </template>
+      </h2>
+      <p>
+        <template type="language-group">
+          <span language="en">Bug reports and pull requests are welcome on <a href="https://github.com/hidao80/memory_mcp">GitHub</a>.</span>
+          <span language="ja">バグ報告やプルリクエストは<a href="https://github.com/hidao80/memory_mcp">GitHub</a>で歓迎します。</span>
+          <span language="zh">欢迎在 <a href="https://github.com/hidao80/memory_mcp">GitHub</a> 上提交问题报告和拉取请求。</span>
+          <span language="es">Los informes de errores y las solicitudes de extracción son bienvenidos en <a href="https://github.com/hidao80/memory_mcp">GitHub</a>.</span>
+          <span language="ru">Отчёты об ошибках и pull request'ы приветствуются на <a href="https://github.com/hidao80/memory_mcp">GitHub</a>.</span>
+        </template>
+      </p>
     </section>
 
     <footer>
       <p>
-        Released under the <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MIT License</a>.
-        Created by <a href="https://github.com/hidao80">hidao80</a>.
+        <template type="language-group">
+          <span language="en">Released under the <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MIT License</a>. Created by <a href="https://github.com/hidao80">hidao80</a>.</span>
+          <span language="ja"><a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MITライセンス</a>の下で公開。作者: <a href="https://github.com/hidao80">hidao80</a>。</span>
+          <span language="zh">基于 <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MIT 许可证</a>发布。作者：<a href="https://github.com/hidao80">hidao80</a>。</span>
+          <span language="es">Publicado bajo la <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">Licencia MIT</a>. Creado por <a href="https://github.com/hidao80">hidao80</a>.</span>
+          <span language="ru">Выпущено под лицензией <a href="https://github.com/hidao80/memory_mcp/blob/master/LICENSE">MIT</a>. Автор: <a href="https://github.com/hidao80">hidao80</a>.</span>
+        </template>
       </p>
     </footer>
 
   </main>
+
+  <script src="https://unpkg.com/multilanguagejs@2.0.1/dist/multilanguagejs.umd.cjs"></script>
+  <script src="./main.min.js"></script>
 </body>
 </html>
